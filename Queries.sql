@@ -10,7 +10,7 @@ from student;
 -- 2. Print out the IDs of all the tenured instructors. 
 select instructor_id AS ID
 from instructor
-where tenured = '0';
+where tenured = '1';
 
 -- 3. Print out the student first and last names along with their advisor's first and last names. 
 -- Make sure to alias descriptive column names. Leave out any students without advisors and any 
