@@ -36,18 +36,11 @@ where course_code LIKE '%_3___%';
 
 -- 7. Print out the course schedule of the student with an ID of 1 by printing off the course code, 
 -- instructor first name, instructor last name, and number of credit hours for each course in which student 1 is enrolled. 
--- option 1
-Select s.student_id, concat(s.first_name," ", s.last_name) AS Student_Name, c.course_code as Course_code, 
+select c.course_code as Course_code, 
 concat(i.first_name," ", i.last_name) AS Instructor_Name, c.num_credits as Credit_Hours
-from student s join instructor i ON s.advisor_id = i.instructor_id 
-JOIN course c ON c. instructor_id = i.instructor_id
-where student_id = 1;
--- option 2
-Select c.course_code as Course_code, 
-concat(i.first_name," ", i.last_name) AS Instructor_Name, c.num_credits as Credit_Hours
-from student s join instructor i ON s.advisor_id = i.instructor_id 
-JOIN course c ON c. instructor_id = i.instructor_id
-where student_id = 1;
+from course c join instructor i ON c.instructor_id = i.instructor_id
+JOIN student_schedule s ON s.course_id = c.course_id
+where student_id = 1; 
 
 
 
